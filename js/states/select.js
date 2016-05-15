@@ -79,6 +79,12 @@ $.Select.prototype = {
 
     update: function() {
 
+        var esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+
+        if (esc.isDown) {
+          this.state.start('Splash');
+        }
+
         if (this.keys.k1.isDown) {
           this.game1up();
         }

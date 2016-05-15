@@ -38,11 +38,11 @@ $.Splash.prototype = {
         this.helpText.anchor.x = 0.5;
         this.help.addChild(this.helpText);
 
-        // this.options = g.add.button(420, 10, 'button', s.showOptions, this, 3, 3, 3);
-        // this.options.anchor.x = 0.5;
-        // this.optionsText = this.game.add.bitmapText(2, 3, '8bit', "OPTIONS",14);
-        // this.optionsText.anchor.x = 0.5;
-        // this.options.addChild(this.optionsText);
+        this.options = g.add.button(420, 10, 'button', s.showOptions, this, 3, 3, 3);
+        this.options.anchor.x = 0.5;
+        this.optionsText = this.game.add.bitmapText(2, 3, '8bit', "OPTIONS",14);
+        this.optionsText.anchor.x = 0.5;
+        this.options.addChild(this.optionsText);
 
 
         this.button = g.add.button(x, 500, 'button', function() {
@@ -79,11 +79,12 @@ $.Splash.prototype = {
 
     update: function() {
 
-        var start = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER),
+        var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER),
+            start = this.game.input.keyboard.addKey(Phaser.Keyboard.S),
             help = this.game.input.keyboard.addKey(Phaser.Keyboard.H),
             options = this.game.input.keyboard.addKey(Phaser.Keyboard.O);
 
-        if (start.isDown) {
+        if (start.isDown || enter.isDown) {
             this.startGame();
         } else if (help.isDown) {
             this.showHelp();

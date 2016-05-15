@@ -93,11 +93,15 @@ $.Help.prototype = {
 
     update: function() {
 
-        var back = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-        if (back.isDown) {
+        var enter = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER),
+            esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC),
+            back = this.game.input.keyboard.addKey(Phaser.Keyboard.B);
+
+        if (back.isDown || enter.isDown || esc.isDown) {
           this.state.start('Splash');
         }
+
     }
 
 }

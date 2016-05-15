@@ -4,6 +4,7 @@ $ = {
     score: 0,
 
     music: null,
+    sfx: null,
     numPlayers: 1,
     includeAI: true,
     totals: {
@@ -26,6 +27,13 @@ $.Boot.prototype = {
 
 
         var s = this._getMinMax();
+
+        $.music = $.Helpers.getItem('music') || false;
+        $.sfx = $.Helpers.getItem('sfx') || false;
+        $.includeAI = $.Helpers.getItem('includeAI') || false;
+        $.Helpers.setItem($.music);
+        $.Helpers.setItem($.sfx);
+        $.Helpers.setItem($.includeAI);
 
         this.input.maxPointers = 10;
         this.stage.disableVisibilityChange = true;

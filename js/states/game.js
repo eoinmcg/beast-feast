@@ -29,8 +29,10 @@ $.Game.prototype = {
     this.shakeWorld = 0;
     this.gameOver = false;
 
-    this.music = this.game.add.audio('titleMusic');
-    this.music.play();
+    if ($.music) {
+      this.music = this.game.add.audio('titleMusic');
+      this.music.play();
+    }
 
     g.input.addPointer();
     g.input.addPointer();
@@ -44,8 +46,6 @@ $.Game.prototype = {
       thud: this.game.add.audio('thud')
     };
 
-    this.sfx.combo = this.game.add.audio('combo');
-    this.sfx.combo = this.game.add.audio('combo');
 
 
     this.init();
@@ -234,18 +234,22 @@ $.Game.prototype = {
           i = player.length,
           reStart;
 
-      this.music.stop();
+      if ($.music) {
+        this.music.stop();
+      }
+
       if (this.gameOver) {
         return;
       }
-    while(i--) {
-      if (player[i].score > hi) {
-        hi = player[i].score;
-        winner = player[i].col;
-        winnerCol = player[i].col;
-      } 
-      player[i].moveBody('stop');
-    }
+
+      while(i--) {
+        if (player[i].score > hi) {
+          hi = player[i].score;
+          winner = player[i].col;
+          winnerCol = player[i].col;
+        } 
+        player[i].moveBody('stop');
+      }
 
     // }
     winnerTint = this.tints[winner];
@@ -352,7 +356,9 @@ $.Game.prototype = {
 			        // capguy.animations.add('walk', Phaser.Animation.generateFrameNames('capguy/walk/', 1, 8, '', 4), 10, true, false);
         explosion.play('thud', 30, false, true);
         if (fx) {
-          this.sfx.thud.play();
+          if ($.sfx) {
+            this.sfx.thud.play();
+          }
           this.shakeWorld = 30;
         }
     },

@@ -52,6 +52,7 @@ gulp.task('initbuild', function() {
   });
 
   config.js = js;
+  console.log(config.js);
 
 });
 
