@@ -386,9 +386,9 @@ $.Game.prototype = {
       fruit.alive = false;
       fruit.spawn();
 
-      
-      this.particleBurst(player.body.x, player.body.y, 5);
-      this.showPoint(player.body.x, player.body.y, player.col);
+      if ($.sfx) {
+        this.sfx.collect.play();
+      }
 
       player.munch();
       player.score += 1;

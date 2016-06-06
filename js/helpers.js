@@ -2,7 +2,7 @@ $.Helpers = {
 
 
 
-  getItem: function(key) {
+  getItem: function(key, def) {
     var val;
     try {
       val = localStorage.getItem(key);
@@ -16,7 +16,7 @@ $.Helpers = {
     } else if (val === 'false') {
       return false; 
     } else {
-      return val;
+      return (def) ? def : val;
     }
 
   },
@@ -26,7 +26,7 @@ $.Helpers = {
     try {
       localStorage.setItem(key, val);
     } catch (e) {
-
+      console.log(e);
     }
   }
 

@@ -106,7 +106,9 @@ $.Bug.prototype.munch = function() {
   }
 
 
-  this._p.sfx.collect.play();
+  if ($.sfx) {
+    this._p.sfx.collect.play();
+  }
 
   if (!this.parts[this.munchCounter - 1]) {
     return;

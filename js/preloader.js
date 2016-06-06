@@ -45,8 +45,12 @@ $.Preloader.prototype = {
 		if (this.cache.isSoundDecoded('thud') && this.ready === false)
 		{
 			this.ready = true;
-            var intro = this.add.audio('combo');
-            intro.play();
+
+      var intro = this.add.audio('combo');
+
+      if ($.sfx) {
+        intro.play();
+      }
 
 			this.state.start('Intro');
 

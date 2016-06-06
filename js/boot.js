@@ -28,12 +28,12 @@ $.Boot.prototype = {
 
         var s = this._getMinMax();
 
-        $.music = $.Helpers.getItem('music') || false;
-        $.sfx = $.Helpers.getItem('sfx') || false;
-        $.includeAI = $.Helpers.getItem('includeAI') || false;
-        $.Helpers.setItem($.music);
-        $.Helpers.setItem($.sfx);
-        $.Helpers.setItem($.includeAI);
+        $.music = $.Helpers.getItem('music', true);
+        $.sfx = $.Helpers.getItem('sfx', true);
+        $.includeAI = $.Helpers.getItem('includeAI', true);
+        $.Helpers.setItem('music', $.music);
+        $.Helpers.setItem('sfx', $.sfx);
+        $.Helpers.setItem('includeAI', $.includeAI);
 
         this.input.maxPointers = 10;
         this.stage.disableVisibilityChange = true;
